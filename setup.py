@@ -7,13 +7,13 @@ Created on 2024/11/4 上午9:48
 ---------------------------------------------
 """
 
-VERSION = '1.0.3'
+VERSION = '1.0.4'
 from setuptools import setup, find_packages
 
 setup(
     name='yck',
     version=VERSION,
-    py_modules=['yck'],
+    py_modules=['yck', 'dtype'],
     install_requires=['clickhouse-driver', 'pandas', 'polars'],
 
     author='ZhangYundi',
