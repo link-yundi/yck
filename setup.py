@@ -7,7 +7,7 @@ Created on 2024/11/4 上午9:48
 ---------------------------------------------
 """
 
-VERSION = '1.0.1'
+VERSION = '1.0.2'
 from setuptools import setup, find_packages
 
 setup(
@@ -18,7 +18,7 @@ setup(
 
     author='ZhangYundi',
     author_email='yundi.xxii@outlook.com',
-    packages=find_packages(include=['yck', 'yck.*']),
+    packages=find_packages(include=['yck', 'yck.*', 'dtype.py']),
     description='Query clickhouse cluster and return pandas dataframe or polars dataframe',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
