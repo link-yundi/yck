@@ -7,7 +7,7 @@ Created on 2024/11/4 上午9:48
 ---------------------------------------------
 """
 
-VERSION = '1.0.0'
+VERSION = '1.0.1'
 from setuptools import setup, find_packages
 
 setup(

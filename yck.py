@@ -11,6 +11,7 @@ from clickhouse_driver import Client
 import polars as pl
 from random import randint
 import pandas as pd
+import dtype
 
 def connect(urls: list[str], user: str, password: str) -> Client:
     i = randint(0, len(urls) - 1)
@@ -23,7 +24,10 @@ def query_pandas(sql, conn) -> pd.DataFrame:
 
 def query_polars(sql, conn) -> pl.DataFrame:
     data, columns = conn.execute(sql, columnar=True, with_column_types=True)
-    columns = [name for name, type_ in columns]
+    columns = {name: dtype.infer_dtype_from_database_typename(type_) for name, type_ in columns}
     return pl.DataFrame(
-        {col: d for d, col in zip(data, columns)},
+        {col: d for d, col in zip(data, columns.keys())},
+        schema_overrides=columns,
     )
+
+
