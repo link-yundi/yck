@@ -19,8 +19,16 @@ config = dict(
 )
 
 sql = "select * from <db_name>.<tb_name> where date='2024-10-23';"
-with connect(**config) as conn:
+
+# 例子1
+with yck.connect(**config) as conn:
     # 请求 polars 
-    df_pl = query_polars(sql, conn)
+    df_pl = yck.query_polars(sql, conn)
     # 请求 pandas
-    df_pd = query_pandas(sql, conn)
+    df_pd = yck.query_pandas(sql, conn)
+
+# 例子2
+conn = yck.connect(**config)
+df_pl = yck.query_polars(sql, conn)
+df_pd = yck.query_pandas(sql, conn)
+conn.disconnect()
